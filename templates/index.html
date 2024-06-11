@@ -2,47 +2,69 @@
 
 {% block content %}
 <div class="container mx-auto">
-    <h1 class="text-2xl mt-4 font-bold">Generate Article Using AI</h1>
+    <h1 style="color: white; letter-spacing: 0.05em;" class="text-2xl font-bold mt-4">Generate Article Using AI</h1>
 
-    <select id="language" name="language" class="mt-4 bg-white border border-gray-300 rounded-lg">
-        <option value="English">English</option>
-        <option value="Chinese">Chinese</option>
-        <option value="Spanish">Spanish</option>
-        <option value="French">French</option>
-        <option value="Arabic">Arabic</option>
-        <option value="Bengali">Bengali</option>
-        <option value="Russian">Russian</option>
-        <option value="Portuguese">Portuguese</option>
-        <option value="Indonesian">Indonesian</option>
-        <option value="German">German</option>
-        <option value="Japanese">Japanese</option>
-        <option value="Turkish">Turkish</option>
-        <option value="Italian">Italian</option>
-        <option value="Ukrainian">Ukrainian</option>
-    </select>
+    <div class="flex flex-col w-52">
+        <div class="flex justify-between mt-4">
+            <div class="p-[1px] bg-gradient-to-r from-[#A992FF] to-[#AD00FF] rounded">
+                <select 
+                    id="language" 
+                    name="language" 
+                    style="background: #333333; color: white;" 
+                    class="w-full p-2 bg-white border-none rounded focus:outline-none"
+                >
+                    <option value="English">English</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Indonesian">Indonesian</option>
+                    <option value="German">German</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Ukrainian">Ukrainian</option>
+                </select>
+            </div>
+        
+            <div class="p-[1px] bg-gradient-to-r from-[#A992FF] to-[#AD00FF] rounded">
+                <select 
+                    id="level" 
+                    name="level"
+                    style="background: #333333; color: white;" 
+                    class="w-full p-2 bg-white border-none rounded focus:outline-none"
+                >
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+        </div>
 
-    <select id="level" name="level" class="mt-4 bg-white border border-gray-300 rounded-lg">
-        <option value="A1">A1</option>
-        <option value="A2">A2</option>
-        <option value="B1">B1</option>
-        <option value="B2">B2</option>
-        <option value="C1">C1</option>
-        <option value="C2">C2</option>
-    </select>
-
-    <button 
-        hx-post="/generate" 
-        hx-target="#result" 
-        class="animate-pulse bg-blue-400 px-2 py-1 rounded-lg" 
-        hx-trigger="click"
-        hx-include="[name='language'], [name='level']" 
-        hx-indicator="#loader"
-        onclick="document.getElementById('loader').style.display = 'block';"
-    >
-        Generate
-    </button>
+        <button 
+            hx-post="/generate" 
+            hx-target="#result" 
+            style="color: white; letter-spacing: 0.05em;"
+            class="w-full bg-gradient-to-r from-[#A992FF] to-[#AD00FF] p-2 mt-3 rounded font-medium flex justify-center items-center space-x-2" 
+            hx-trigger="click"
+            hx-include="[name='language'], [name='level']" 
+            hx-indicator="#loader"
+            onclick="document.getElementById('loader').style.display = 'block';"
+        >
+            Generate
+            <img src="/static/generate.svg" alt="Generate Icon" class="w-4 h-4 ml-1">
+        </button>
+    </div>
+    
     <div id="result" class="mt-4"></div>
-    <div id="loader" class="mt-4 text-blue-500" style="display: none;">Wait...</div>
+    <div id="loader" class="animate-bounce mt-4 text-white" style="display: none;">Processing...</div>
+
     <script>
         document.addEventListener("htmx:afterRequest", function(event) {
             document.getElementById("loader").style.display = "none";
