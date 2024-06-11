@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto">
+    <h1 class="text-2xl mt-4 font-bold">Generate Article Using AI</h1>
+
+    <select id="language" name="language" class="mt-4 bg-white border border-gray-300 rounded-lg">
+        <option value="English">English</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="Arabic">Arabic</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Russian">Russian</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Indonesian">Indonesian</option>
+        <option value="German">German</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Turkish">Turkish</option>
+        <option value="Italian">Italian</option>
+        <option value="Ukrainian">Ukrainian</option>
+    </select>
+
+    <select id="level" name="level" class="mt-4 bg-white border border-gray-300 rounded-lg">
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+        <option value="C2">C2</option>
+    </select>
+
+    <button 
+        hx-post="/generate" 
+        hx-target="#result" 
+        class="animate-pulse bg-blue-400 px-2 py-1 rounded-lg" 
+        hx-trigger="click"
+        hx-include="[name='language'], [name='level']" 
+        hx-indicator="#loader"
+        onclick="document.getElementById('loader').style.display = 'block';"
+    >
+        Generate
+    </button>
+    <div id="result" class="mt-4"></div>
+    <div id="loader" class="mt-4 text-blue-500" style="display: none;">Wait...</div>
+    <script>
+        document.addEventListener("htmx:afterRequest", function(event) {
+            document.getElementById("loader").style.display = "none";
+        });
+    </script>
+</div>
+{% endblock %}
