@@ -1,4 +1,4 @@
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0-green.svg) ![HTMX](https://img.shields.io/badge/HTMX-1.9.12-orange.svg) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-06B6D4.svg) 
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0-green.svg) ![HTMX](https://img.shields.io/badge/HTMX-1.9.12-orange.svg) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-06B6D4.svg) 
 
 ArticleAICreator is a web application that generates articles in various languages and complexity levels. It leverages the g4f library to provide language learners with customized reading materials suitable for their proficiency level. The project utilizes FastAPI for the backend and TailwindCSS along with HTMX for the frontend.
 
